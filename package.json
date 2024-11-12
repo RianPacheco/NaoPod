@@ -1,6 +1,14 @@
 {
+  "name": "naopod",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
   "dependencies": {
     "express": "^4.21.1",
+    "nodemon": "^3.1.7",
     "nunjucks": "^3.2.4",
     "sqlite3": "^5.1.7"
   }

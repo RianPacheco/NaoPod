@@ -1,18 +1,13 @@
 const sqlite3 = require('sqlite3').verbose();
-const db = new sqlite3.Database(':memory:');
+const db = new sqlite3.Database('../bd/naopod.bd');
 
 db.serialize(() => {
-    db.run("CREATE TABLE lorem (info TEXT)");
-
-    const stmt = db.prepare("INSERT INTO lorem VALUES (?)");
-    for (let i = 0; i < 10; i++) {
-        stmt.run("Ipsum " + i);
-    }
+    db.run("CREATE TABLE IF NOT EXISTS users(id INTEGER PRIMARY KEY AUTOINCREMENT , usuario_cad TEXT, email_cad TEXT, senha_cad TEXT, confsenha_cad TEXT)");
+    const stmt = db.prepare("INSERT INTO users(usuario_cad, email_cad, senha_cad, confsenha_cad) VALUES (?, ?, ?, ?)");
+    stmt.run('rafael', 'rafael.2023120', 'pacheco123', 'pacheco123');
     stmt.finalize();
-
-    db.each("SELECT rowid AS id, info FROM lorem", (err, row) => {
-        console.log(row.id + ": " + row.info);
-    });
 });
 
 db.close();
+
+module.exports = bd;

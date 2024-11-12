@@ -18,14 +18,13 @@ body {
     
 }
 
-.form {
+form {
     padding: 20px;
     background-color: #0059e6;
     border-radius: 10px 0 0 10px;
     color: #ffffff;
     width: 60%;
     display: grid;
-
     align-items: center; 
 }
 
