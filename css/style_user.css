@@ -2,44 +2,59 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    height: 100%; /* Garante que o body ocupe 100% da altura */
 }
 
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
 header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-color: #000080;
-    color: white;
-    padding: 10px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    z-index: 1000;
-}
-
-header .logo {
-    font-size: 24px;
-    font-weight: bold;
-}
-
-header .nav a, .notifications {
+    background-color: #000060;
     color: white;
-    margin-left: 20px;
+    padding: 10px 20px;
+}
+
+header .logo{
+    width: 70px;
+}
+
+header .nav-links {
+    display: flex;
+    gap: 20px;
+}
+
+header .nav-links a {
+    color: white;
     text-decoration: none;
-    cursor: pointer;
+    padding: 5px 10px;
+    transition: background-color 0.3s;
+}
+
+header .nav-links a:hover {
+    background-color: #0059e6;
+    border-radius: 5px;
 }
 
 .notifications-dropdown {
     display: none;
     position: absolute;
-    top: 50px;
-    right: 20px;
-    background-color: #fff;
+    top: 70px;
+    right: 100px;
+    background-color:#ffffff;
     border: 1px solid #ccc;
     padding: 10px;
-    width: 200px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 150px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    height: auto;
+    z-index: 2;  
+    border-radius: 10px;
+    color: #000060;
+
 }
 
 .notifications-dropdown ul {
@@ -53,49 +68,62 @@ header .nav a, .notifications {
 }
 
 .background-container {
-    position: relative;
-    height: 200px;   /* Ajuste conforme necessário para o tamanho do espaço entre o header e user-table */
-    background-color: #f0f0f0;  /* Cor de fundo padrão */
-    object-fit: cover;
-
-}
-
-.background-container input[type="file"] {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0; /* Torna o botão invisível */
-    cursor: pointer;
+    position: relative;  
+    height: 200px;                   
+    width: 100%;                   
+    background-color: #f0f0f0;     
+    background-image: url('../assets/backfoto.jpg');
+    background-size: cover;       
+    background-position: center center; 
+    background-repeat: no-repeat;    
 }
 
 .user-table {
     display: flex;
-    justify-content: space-between; /* Distribui os itens, deixando a foto à esquerda e os botões à direita */
-    align-items: center;            /* Centraliza verticalmente os itens */
-    padding: 20px;
+    justify-content: space-between;
+    align-items: center;
     background-color: #0059e6;
     max-height: 30px;
+    position: relative;
+    height: 100vh;
+    padding: 20px;
+    overflow: hidden;
+
 }
 
 .profile {
     display: flex;
-    align-items: center;           /* Centraliza a foto de perfil verticalmente */
+    align-items: center;
+}
+
+.profile-photo-container {
+    position: relative;
 }
 
 .profile img {
     width: 60px;
     height: 60px;
-    border-radius: 50%;            /* Torna a imagem circular */
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.profile img:hover {
+    opacity: 0.8;
 }
 
 .buttons {
     display: flex;
-    justify-content: center;       /* Centraliza os botões horizontalmente */
-    gap: 30px;                     /* Espaçamento entre os botões */
-    margin-right: 25%;
-    margin-top: 5.6vh;
+    justify-content: center;
+    gap: 30px;
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 100%;
+    flex-wrap: wrap;
 }
 
 .buttons button {
@@ -106,55 +134,135 @@ header .nav a, .notifications {
     border: none;
     color: white;
     border-top-left-radius: 15px;
-    border-top-right-radius:15px;
-    height: 25px;
+    border-top-right-radius: 15px;
+    height: 35px;
+    transition: height 0.3s;
+    margin-bottom: 10px;
+    margin-top: 100%;
+    transition: background-color 0.5s ease, color 0.5s ease;
 }
 
+.buttons button.selected {
+    background-color: white;
+    color: #000060;
+}
 
+button:focus {
+    outline: none;
+}
 
 .section {
-    display: none;            /* Inicialmente, todas as seções são invisíveis */
-    max-height: 0;            /* As seções começam com altura 0 */
-    overflow: hidden;         /* Oculta qualquer conteúdo extra */
-    padding: 0 20px;          /* Adiciona espaçamento nas laterais */
+    display: none;
+    max-height: 0;
+    padding: 0 20px;
     transition: max-height 0.3s ease-out, padding 0.3s ease-out;
 }
 
 .section.active {
-    display: block;           /* Mostra a seção ativa */
-    max-height: 500px;        /* Ajuste de altura para a transição */
-    padding: 20px;            /* Adiciona espaçamento no conteúdo da seção */
-}
-
-button:focus {
-    height: 50px;
-}
-
-
-input[type="file"] {
-    margin-top: 10px;
-}
-
-.profile-photo-container {
-    position: relative;
-    display: inline-block;
-}
-
-.profile-photo-container img {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
     display: block;
+    max-height: 100%;
+    padding: 20px;
+}
+
+
+/* section 1 */
+
+#section-1{
+    background-color: #a7d8f0;
+}
+.weekly-count, .annual-calendar {
+    margin: 20px 0;
+}
+
+.weekly-count{
+    text-align: center;
+}
+.week-buttons {
+    display: grid;
+    grid-template-columns: repeat(7, 0fr);
+    margin-bottom: 10px;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.week-day-btn, .day {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border: #000060 solid 2px;
+    background-color: #0059e6;
+    color: white;
+    padding: 30px;
+}
+
+.week-day-btn.good, .day.good {
+    background-color: rgb(96, 255, 96);
+    color: black;
+}
+
+.week-day-btn.bad, .day.bad {
+    background-color: rgb(255, 86, 86);
+    color: white;
+}
+
+.annual-calendar {
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+    background-color: #0059e6;
+    padding: 20px;
+    border-radius: 20px;
+    color: white;
+}
+
+.calendar {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    text-align: center;
+    align-items: center;
+    justify-content: center ;
+    max-width: auto;
+}
+
+.calendar-header {
+    text-align: center;
+    display: grid;
+    grid-template-columns: repeat(7, 0fr);
+    font-weight: bold;
+    justify-content: center;
+    align-items: center;
+    gap: 45px;
+}
+
+.calendar-days {
+    align-items: center;
+    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(7, 0fr);
+    gap: 10px;
+    color: black;
+}
+
+.empty-day {
+    visibility: hidden;
+}
+
+.day {
+    background-color: #a7d8f0;
+    color: black
+}
+
+.btn-calendar{
+    background-color: white;
     margin: 10px;
+    padding: 5px;
+    border: #000060 solid 1px;
+    border-radius: 10px;
 }
-
-.profile-photo-container input[type="file"] {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    opacity: 0;      /* Torna o botão invisível */
-    cursor: pointer; /* Ainda mantém o cursor de clique sobre a foto */
-}
-

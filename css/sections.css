@@ -1,0 +1,54 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.section {
+    padding: 20px;
+}
+
+.weekly-count, .annual-calendar {
+    margin: 20px 0;
+}
+
+.week-days, .calendar-days {
+    display: grid;
+    gap: 5px;
+}
+
+.week-days {
+    grid-template-columns: repeat(7, 1fr);
+    margin-bottom: 10px;
+}
+
+.calendar-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.calendar-controls button {
+    padding: 5px 10px;
+    margin: 0 5px;
+}
+
+.day {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.day.good {
+    background-color: green;
+    color: white;
+}
+
+.day.bad {
+    background-color: red;
+    color: white;
+}

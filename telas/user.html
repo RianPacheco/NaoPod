@@ -8,17 +8,15 @@
 </head>
 <body>
 
-    <!-- Header -->
     <header>
-        <div class="logo">ProjetoLogo</div>
-        <div class="nav">
-            <a href="sobre.html">Sobre Nós</a>
-            <div class="notifications" onclick="toggleNotifications()">Notificações</div>
-            <a href="conta.html">Conta</a>
+        <img class="logo" src="../assets/logoAC.png" alt="logo">
+        <div class="nav-links">
+            <a href="#sobre-nos">Sobre Nós</a>
+            <a href="javascript:void(0)" id="notifications-link">Notificações</a>
+            <a href="#conta">Conta</a>
         </div>
     </header>
 
-    <!-- Notificações -->
     <div id="notifications" class="notifications-dropdown">
         <ul>
             <li>Nova notificação 1</li>
@@ -27,33 +25,64 @@
         </ul>
     </div>
 
-    <div class="background-container">
-        <input type="file" id="background-upload" onchange="changeBackground(event)">
-    </div>
+    <div class="background-container"></div>
 
-    <!-- Tabela do usuário -->
     <div class="user-table">
         <div class="profile">
             <div class="profile-photo-container">
-                <img src="default-profile.jpg" alt="Foto de Perfil" id="profile-picture" />
-                <input type="file" accept="image/*" onchange="changeProfilePicture(event)" />
+                <img src="../assets/foto perfil padrao.jpg" alt="Foto de Perfil" id="profile-picture"/>
+                <input type="file" accept="image/*" onchange="changeProfilePicture(event)" id="file-input">
             </div>
         </div>
+        
         <div class="buttons">
-            <button onclick="showSection(1)">Desempenho</button>
+            <button onclick="showSection(1)" class="selected">Desempenho</button>
             <button onclick="showSection(2)">Estatística</button>
             <button onclick="showSection(3)">Relatório</button>
             <button onclick="showSection(4)">Comunidade</button>
         </div>
     </div>
-    
-    <!-- Seções correspondentes aos botões -->
-    <div id="section-1" class="section active">Conteúdo da Seção 1</div>
+
+    <div id="section-1" class="section active">
+         <!-- Contagem Semanal -->
+         <div class="weekly-count">
+            <h3>Semana Atual</h3>
+            <div class="week-buttons">
+                <button class="week-day-btn" onclick="toggleWeeklyStatus(this)">Dom</button>
+                <button class="week-day-btn" onclick="toggleWeeklyStatus(this)">Seg</button>
+                <button class="week-day-btn" onclick="toggleWeeklyStatus(this)">Ter</button>
+                <button class="week-day-btn" onclick="toggleWeeklyStatus(this)">Qua</button>
+                <button class="week-day-btn" onclick="toggleWeeklyStatus(this)">Qui</button>
+                <button class="week-day-btn" onclick="toggleWeeklyStatus(this)">Sex</button>
+                <button class="week-day-btn" onclick="toggleWeeklyStatus(this)">Sáb</button>
+            </div>
+        </div>
+
+        <!-- Calendário Anual -->
+        <div class="annual-calendar">
+            <h3 id="calendar-title">Calendário</h3>
+            <div class="calendar">
+                <div class="calendar-header">
+                    <div>Dom</div>
+                    <div>Seg</div>
+                    <div>Ter</div>
+                    <div>Qua</div>
+                    <div>Qui</div>
+                    <div>Sex</div>
+                    <div>Sáb</div>
+                </div>
+                <div class="calendar-days" id="calendar-days"></div>
+            </div>
+            <button class="btn-calendar" onclick="changeMonth(-1)">Anterior</button>
+            <button class="btn-calendar" onclick="changeMonth(1)">Próximo</button>
+        </div>
+    </div>
+    </div>
     <div id="section-2" class="section">Conteúdo da Seção 2</div>
     <div id="section-3" class="section">Conteúdo da Seção 3</div>
     <div id="section-4" class="section">Conteúdo da Seção 4</div>
-    
 
     <script src="../js/user.js"></script>
+    <script src="../js/calendar.js"></script>
 </body>
 </html>

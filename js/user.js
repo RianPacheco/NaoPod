@@ -1,32 +1,9 @@
-// Função para mostrar ou esconder notificações
-function toggleNotifications() {
-    const notifications = document.getElementById("notifications");
-    notifications.style.display = (notifications.style.display === "block") ? "none" : "block";
-}
+// Função para alternar o menu de notificações
+document.getElementById('notifications-link').addEventListener('click', function() {
+    const notificationsDropdown = document.getElementById('notifications');
+    notificationsDropdown.style.display = notificationsDropdown.style.display === 'block' ? 'none' : 'block';
+});
 
-    // Função para mudar o fundo
-    function changeBackground(event) {
-        const file = event.target.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                document.querySelector('.background-container').style.backgroundImage = `url(${e.target.result})`;
-            }
-            reader.readAsDataURL(file);
-        }
-    }
-
-// Função para alterar a foto de perfil
-function changeProfilePicture(event) {
-    const file = event.target.files[0];
-    if (file) {
-        const reader = new FileReader();
-        reader.onload = function() {
-            document.getElementById('profile-picture').src = reader.result;
-        };
-        reader.readAsDataURL(file);
-    }
-}
 
 // Função para mostrar ou esconder as seções com transição
 function showSection(sectionNumber) {
@@ -39,4 +16,14 @@ function showSection(sectionNumber) {
     // Mostra a seção correspondente
     const selectedSection = document.getElementById(`section-${sectionNumber}`);
     selectedSection.classList.add('active');
+
+    // Adiciona a classe 'selected' ao botão clicado
+    const buttons = document.querySelectorAll('.buttons button');
+    buttons.forEach(button => {
+        button.classList.remove('selected'); // Remove a classe 'selected' de todos os botões
+    });
+
+    // Adiciona a classe 'selected' ao botão clicado
+    const clickedButton = document.querySelector(`.buttons button:nth-child(${sectionNumber})`);
+    clickedButton.classList.add('selected');
 }
