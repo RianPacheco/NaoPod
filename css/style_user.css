@@ -1,0 +1,160 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #000080;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+}
+
+header .logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+header .nav a, .notifications {
+    color: white;
+    margin-left: 20px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.notifications-dropdown {
+    display: none;
+    position: absolute;
+    top: 50px;
+    right: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: 200px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.notifications-dropdown ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.notifications-dropdown ul li {
+    padding: 5px 0;
+}
+
+.background-container {
+    position: relative;
+    height: 200px;   /* Ajuste conforme necessário para o tamanho do espaço entre o header e user-table */
+    background-color: #f0f0f0;  /* Cor de fundo padrão */
+    object-fit: cover;
+
+}
+
+.background-container input[type="file"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0; /* Torna o botão invisível */
+    cursor: pointer;
+}
+
+.user-table {
+    display: flex;
+    justify-content: space-between; /* Distribui os itens, deixando a foto à esquerda e os botões à direita */
+    align-items: center;            /* Centraliza verticalmente os itens */
+    padding: 20px;
+    background-color: #0059e6;
+    max-height: 30px;
+}
+
+.profile {
+    display: flex;
+    align-items: center;           /* Centraliza a foto de perfil verticalmente */
+}
+
+.profile img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;            /* Torna a imagem circular */
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;       /* Centraliza os botões horizontalmente */
+    gap: 30px;                     /* Espaçamento entre os botões */
+    margin-right: 25%;
+    margin-top: 5.6vh;
+}
+
+.buttons button {
+    width: 20vh;
+    padding: 10px 20px;
+    cursor: pointer;
+    background-color: #000060;
+    border: none;
+    color: white;
+    border-top-left-radius: 15px;
+    border-top-right-radius:15px;
+    height: 25px;
+}
+
+
+
+.section {
+    display: none;            /* Inicialmente, todas as seções são invisíveis */
+    max-height: 0;            /* As seções começam com altura 0 */
+    overflow: hidden;         /* Oculta qualquer conteúdo extra */
+    padding: 0 20px;          /* Adiciona espaçamento nas laterais */
+    transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+}
+
+.section.active {
+    display: block;           /* Mostra a seção ativa */
+    max-height: 500px;        /* Ajuste de altura para a transição */
+    padding: 20px;            /* Adiciona espaçamento no conteúdo da seção */
+}
+
+button:focus {
+    height: 50px;
+}
+
+
+input[type="file"] {
+    margin-top: 10px;
+}
+
+.profile-photo-container {
+    position: relative;
+    display: inline-block;
+}
+
+.profile-photo-container img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: block;
+    margin: 10px;
+}
+
+.profile-photo-container input[type="file"] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 0;      /* Torna o botão invisível */
+    cursor: pointer; /* Ainda mantém o cursor de clique sobre a foto */
+}
+
