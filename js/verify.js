@@ -54,7 +54,7 @@ function entrar() {
         localStorage.setItem('usuarioLogado', JSON.stringify(usuarioEncontrado));
         
         // Redireciona para a página user.html
-        window.location.href = 'user.html';
+        window.location.href = './telas/user.html';
     } else {
         alert('Usuário ou senha incorretos.');
     }
@@ -65,11 +65,6 @@ function entrar() {
 // Carregar o nome do usuário no perfil após o login
 document.addEventListener('DOMContentLoaded', () => {
     const usuarioLogado = JSON.parse(localStorage.getItem('usuarioLogado'));
-    if (usuarioLogado) {
         // Atualiza o nome do usuário na página
         document.getElementById('nickname').textContent = usuarioLogado.usuario;
-    } else {
-        alert('Nenhum usuário logado. Redirecionando para a página de login.');
-        window.location.href = '../login/index.html'; // Redireciona se não houver login
-    }
 });
