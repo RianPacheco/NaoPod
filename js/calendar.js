@@ -1,157 +1,167 @@
 const calendarDays = document.getElementById("calendar-days");
-const calendarTitle = document.getElementById("calendar-title");
+        const calendarTitle = document.getElementById("calendar-title");
 
-let currentMonth = new Date().getMonth();
-let currentYear = new Date().getFullYear();
-let currentWeekStart = new Date(currentYear, currentMonth, 17); // Início da semana no dia 17
+        let currentMonth = new Date().getMonth();
+        let currentYear = new Date().getFullYear();
+        let currentWeekStart = new Date(currentYear, currentMonth, 17); // Início da semana no dia 17
 
-// Função para gerar o calendário
-function generateCalendar(month, year) {
-    // Configurações iniciais do calendário
-    calendarDays.innerHTML = ""; // Limpa os dias anteriores
-    calendarTitle.innerText = `Calendário de ${monthNames[month]} de ${year}`;
+        // Variáveis globais para armazenar os totais acumulados
+        let totalGoodCount = 0;
+        let totalBadCount = 0;
 
-    // Calcula o primeiro dia do mês e o número de dias
-    const firstDay = new Date(year, month, 1).getDay();
-    const daysInMonth = new Date(year, month + 1, 0).getDate();
+        // Função para gerar o calendário
+        function generateCalendar(month, year) {
+            calendarDays.innerHTML = "";
+            calendarTitle.innerText = `Calendário de ${monthNames[month]} de ${year}`;
 
-    // Preenche os dias vazios até o primeiro dia
-    for (let i = 0; i < firstDay; i++) {
-        const emptyDiv = document.createElement("div");
-        emptyDiv.classList.add("empty-day");
-        calendarDays.appendChild(emptyDiv);
-    }
+            const firstDay = new Date(year, month, 1).getDay();
+            const daysInMonth = new Date(year, month + 1, 0).getDate();
 
-    // Adiciona os dias do mês
-    for (let day = 1; day <= daysInMonth; day++) {
-        const dayButton = document.createElement("button");
-        dayButton.classList.add("day");
-        dayButton.textContent = day;
-
-        const dayDate = new Date(year, month, day);
-
-        // Verifica se o dia pertence à semana atual
-        if (isInSameWeek(dayDate, currentWeekStart)) {
-            dayButton.onclick = () => toggleDayStatus(dayButton, dayDate);
-            // Preserva o status dos botões quando se navega para a próxima semana
-            const status = getDayStatusFromWeekButtons(day);
-            if (status) {
-                dayButton.classList.add(status);
+            for (let i = 0; i < firstDay; i++) {
+                const emptyDiv = document.createElement("div");
+                emptyDiv.classList.add("empty-day");
+                calendarDays.appendChild(emptyDiv);
             }
-        } else {
-            dayButton.disabled = true; // Desabilita os dias fora da semana atual
-        }
 
-        calendarDays.appendChild(dayButton);
-    }
-}
+            for (let day = 1; day <= daysInMonth; day++) {
+                const dayButton = document.createElement("button");
+                dayButton.classList.add("day");
+                dayButton.textContent = day;
 
-// Alterna entre bom, ruim e neutro
-function toggleDayStatus(button, dayDate) {
-    if (button.classList.contains('good')) {
-        button.classList.remove('good');
-        button.classList.add('bad');
-        updateWeekButton(dayDate, 'bad');
-    } else if (button.classList.contains('bad')) {
-        button.classList.remove('bad');
-        button.classList.add('neutral');
-        updateWeekButton(dayDate, 'neutral');
-    } else {
-        button.classList.add('good');
-        updateWeekButton(dayDate, 'good');
-    }
-}
+                const dayDate = new Date(year, month, day);
+                if (isInSameWeek(dayDate, currentWeekStart)) {
+                    dayButton.onclick = () => toggleDayStatus(dayButton, dayDate);
+                    const status = getDayStatusFromWeekButtons(day);
+                    if (status) {
+                        dayButton.classList.add(status);
+                    }
+                } else {
+                    dayButton.disabled = true;
+                }
 
-// Atualiza o botão da semana correspondente ao dia do mês
-function updateWeekButton(dayDate, status) {
-    const dayOfMonth = dayDate.getDate();
-    const weekButtons = document.querySelectorAll(".week-day-btn");
-
-    weekButtons.forEach(button => {
-        const dayButton = button.dataset.week;
-        if (parseInt(dayButton) === (dayOfMonth - 17 + 1)) { // Mapeia os dias 17 a 23
-            button.classList.remove("good", "bad", "neutral");
-            button.classList.add(status);
-        }
-    });
-}
-
-// Função para obter o status do dia a partir dos botões da semana
-function getDayStatusFromWeekButtons(day) {
-    const weekButtons = document.querySelectorAll(".week-day-btn");
-    let status = null;
-
-    weekButtons.forEach(button => {
-        const dayButton = button.dataset.week;
-        if (parseInt(dayButton) === (day - 17 + 1)) {
-            if (button.classList.contains("good")) {
-                status = "good";
-            } else if (button.classList.contains("bad")) {
-                status = "bad";
-            } else if (button.classList.contains("neutral")) {
-                status = "neutral";
+                calendarDays.appendChild(dayButton);
             }
         }
-    });
 
-    return status;
-}
+        function toggleDayStatus(button, dayDate) {
+            if (button.classList.contains('good')) {
+                button.classList.remove('good');
+                button.classList.add('bad');
+                updateWeekButton(dayDate, 'bad');
+            } else if (button.classList.contains('bad')) {
+                button.classList.remove('bad');
+                button.classList.add('neutral');
+                updateWeekButton(dayDate, 'neutral');
+            } else {
+                button.classList.add('good');
+                updateWeekButton(dayDate, 'good');
+            }
+        }
 
-// Função para mudar o mês e ajustar o ano automaticamente
-function changeMonth(direction) {
-    currentMonth += direction;
-    if (currentMonth < 0) {
-        currentMonth = 11; // Define para dezembro
-        currentYear--;     // Reduz o ano
-    } else if (currentMonth > 11) {
-        currentMonth = 0;  // Define para janeiro
-        currentYear++;     // Aumenta o ano
-    }
-    generateCalendar(currentMonth, currentYear);
-}
+        function updateWeekButton(dayDate, status) {
+            const dayOfMonth = dayDate.getDate();
+            const weekButtons = document.querySelectorAll(".week-day-btn");
 
-// Lista dos nomes dos meses
-const monthNames = [
-    "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
-    "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"
-];
+            weekButtons.forEach(button => {
+                const dayButton = button.dataset.week;
+                if (parseInt(dayButton) === (dayOfMonth - 17 + 1)) {
+                    button.classList.remove("good", "bad", "neutral");
+                    button.classList.add(status);
+                }
+            });
+        }
 
-// Função para verificar se o dia está na mesma semana que o início da semana (domingo, dia 17)
-function isInSameWeek(date, startOfWeek) {
-    const startDate = new Date(startOfWeek);
-    const endDate = new Date(startOfWeek);
-    endDate.setDate(startDate.getDate() + 6); // Final da semana (6 dias depois)
+        function getDayStatusFromWeekButtons(day) {
+            const weekButtons = document.querySelectorAll(".week-day-btn");
+            let status = null;
 
-    return date >= startDate && date <= endDate;
-}
+            weekButtons.forEach(button => {
+                const dayButton = button.dataset.week;
+                if (parseInt(dayButton) === (day - 17 + 1)) {
+                    if (button.classList.contains("good")) {
+                        status = "good";
+                    } else if (button.classList.contains("bad")) {
+                        status = "bad";
+                    } else if (button.classList.contains("neutral")) {
+                        status = "neutral";
+                    }
+                }
+            });
 
-// Função para finalizar a semana (não vai avançar para a próxima semana)
-function finalizeWeek() {
-    // Reseta os botões da semana para neutro
-    const weekButtons = document.querySelectorAll(".week-day-btn");
-    weekButtons.forEach(button => {
-        button.classList.remove("good", "bad", "neutral");
-        button.classList.add("neutral"); // Define como neutro
-    });
+            return status;
+        }
 
-    // Não altera a data da semana, a semana permanece a mesma
+        function isInSameWeek(date, startOfWeek) {
+            const startDate = new Date(startOfWeek);
+            const endDate = new Date(startOfWeek);
+            endDate.setDate(startDate.getDate() + 6);
+            return date >= startDate && date <= endDate;
+        }
 
-    generateCalendar(currentMonth, currentYear); // Atualiza o calendário anual sem avançar a semana
-}
+        function finalizeWeek() {
+            const weekButtons = document.querySelectorAll(".week-day-btn");
+        
+            // Verifica se todos os botões foram preenchidos (com 'good' ou 'bad')
+            const allFilled = Array.from(weekButtons).every(button =>
+                button.classList.contains("good") || button.classList.contains("bad")
+            );
+        
+            if (!allFilled) {
+                alert("Preencha todos os dias da semana como 'Bom' ou 'Ruim' antes de finalizar!");
+                return;
+            }
+        
+            let goodCount = 0;
+            let badCount = 0;
+        
+            // Conta quantos botões estão como 'good' e 'bad'
+            weekButtons.forEach(button => {
+                if (button.classList.contains("good")) goodCount++;
+                if (button.classList.contains("bad")) badCount++;
+            });
+        
+            // Acumula os resultados totais
+            totalGoodCount += goodCount;
+            totalBadCount += badCount;
+        
+            // Atualiza os resultados e a performance
+            updateResults(totalGoodCount, totalBadCount);
+            displayPerformance(totalGoodCount, totalBadCount);
+        
+            // Reseta os botões da semana para 'neutral'
+            weekButtons.forEach(button => {
+                button.classList.remove("good", "bad", "neutral");
+                button.classList.add("neutral");
+            });
+        
+            // Atualiza o calendário anual sem alterar a semana
+            generateCalendar(currentMonth, currentYear);
+        }
 
-// Gera o calendário inicial
-generateCalendar(currentMonth, currentYear);
+        function updateResults(totalGood, totalBad) {
+            const greenResults = document.getElementById("green-results");
+            const redResults = document.getElementById("red-results");
 
-// Adiciona evento para o botão "Finalizar Semana"
-document.getElementById("finalize-week-btn").addEventListener("click", finalizeWeek);
+            greenResults.textContent = `${totalGood}`;
+            redResults.textContent = `${totalBad}`;
+        }
 
-// Eventos para os botões da semana
+        const monthNames = [
+            "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
+            "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"
+        ];
+
+        generateCalendar(currentMonth, currentYear);
+
+        document.getElementById("finalize-week-btn").addEventListener("click", finalizeWeek);
+
+        // Eventos para os botões da semana
 const weekDayButtons = document.querySelectorAll(".week-day-btn");
 weekDayButtons.forEach(button => {
     button.addEventListener("click", () => toggleWeekDayStatus(button));
 });
 
-// Alterna entre bom, ruim e neutro para os botões da semana
+// Alterna o estado dos botões da semana
 function toggleWeekDayStatus(button) {
     if (button.classList.contains("good")) {
         button.classList.remove("good");
@@ -161,19 +171,16 @@ function toggleWeekDayStatus(button) {
         button.classList.remove("bad");
         button.classList.add("neutral");
         updateCalendarDays(button.dataset.week, 'neutral');
-    } else if (button.classList.contains("neutral")) {
+    } else {
         button.classList.remove("neutral");
         button.classList.add("good");
-        updateCalendarDays(button.dataset.week, 'good');
-    } else {
-        button.classList.add("good"); // Se não tem nenhuma classe, define como 'good'
         updateCalendarDays(button.dataset.week, 'good');
     }
 }
 
-// Atualiza os dias no calendário com base no botão da semana
+// Atualiza os dias do calendário baseados nos botões da semana
 function updateCalendarDays(weekDay, status) {
-    const dayOfMonth = 17 + (parseInt(weekDay) - 1); // Mapeia os dias de 17 a 23
+    const dayOfMonth = 17 + (parseInt(weekDay) - 1); // Calcula o dia no mês (dias de 17 a 23)
     const dayButtons = document.querySelectorAll(".calendar-days button");
 
     dayButtons.forEach(button => {
@@ -184,3 +191,20 @@ function updateCalendarDays(weekDay, status) {
     });
 }
 
+// Função para gerar botões da semana (garante que os botões sejam clicáveis)
+function generateWeekButtons() {
+    const weekButtonsContainer = document.getElementById("week-buttons");
+    weekButtonsContainer.innerHTML = ""; // Limpa os botões existentes
+
+    for (let i = 0; i < 7; i++) {
+        const weekButton = document.createElement("button");
+        weekButton.classList.add("week-day-btn", "neutral");
+        weekButton.dataset.week = i + 1; // Define o índice do botão
+        weekButton.innerText = `Dia ${i + 1}`;
+        weekButton.addEventListener("click", () => toggleWeekDayStatus(weekButton));
+        weekButtonsContainer.appendChild(weekButton);
+    }
+}
+
+// Chama a função para gerar os botões da semana ao carregar
+generateWeekButtons();

@@ -31,40 +31,18 @@ header .nav-links {
 header .nav-links a {
     color: white;
     text-decoration: none;
-    padding: 5px 10px;
-    transition: background-color 0.3s;
+    padding: 10px 20px;
+    font-size: 20px;
+    background-color: #0059e6;
+    border-radius: 10px;
+    transition: background-color 0.8s, color 0.8s;
 }
 
 header .nav-links a:hover {
-    background-color: #0059e6;
-    border-radius: 5px;
-}
-
-.notifications-dropdown {
-    display: none;
-    position: absolute;
-    top: 70px;
-    right: 100px;
-    background-color:#ffffff;
-    border: 1px solid #ccc;
-    padding: 10px;
-    width: 150px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    height: auto;
-    z-index: 2;  
+    background-color: #ffffff;
+    color:#0059e6;
+    padding: 9px 20px;
     border-radius: 10px;
-    color: #000060;
-
-}
-
-.notifications-dropdown ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-}
-
-.notifications-dropdown ul li {
-    padding: 5px 0;
 }
 
 .background-container {
@@ -284,17 +262,70 @@ button:focus {
 
 #section2{
     display: flex;
+    justify-content: center;
 }
 
 .s2-left{
-    width: 50%;
-    background-color: #000060;
+    width: 45%;
 }
 
 .s2-right{
-    width: 50%;
-    background-color: #0059e6;
+    width: 45%;
+    align-items: center;
+    text-align: center;
+    border: 5px solid #0059e6;
+    border-radius: 15px;
+    margin-top: 20px;
+    height: 500px;
+    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.3);
 }
+
+#finaldes{
+    background-color: white;
+    border: 2px;
+}
+
+#baddays {
+    width: 95%;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    border: 2px solid #0059e6;
+    border-radius: 15px;
+    margin-top: 39px;
+    padding: 40px 0 40px;
+    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.3);
+}
+
+
+#baddays p{
+    color: rgb(177, 0, 0);
+    font-size: 30px;
+    font-weight: 100;
+}
+#gooddays {
+    width: 95%;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    border: 2px solid #0059e6;
+    border-radius: 15px;
+    margin-top: 20px;
+    padding: 40px 0 40px;
+    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.3);
+}
+
+#gooddays p{
+    color: rgb(0, 219, 0);
+    font-size: 30px;
+    font-weight: 100;
+
+}
+
+#performance{
+    font-size: 40px;
+    font-weight: bolder;
+    margin: 30%;
+}
+
 
 /*section 3*/
 
@@ -329,7 +360,7 @@ button:focus {
     text-align: center;
 }
 textarea {
-    width: 95%;
+    width: 98%;
     height: 150px;
     padding: 10px;
     font-size: 16px;
@@ -339,16 +370,17 @@ textarea {
 }
 
 .container1 button {
-    padding: 10px 20px;
-    background-color:#0099e6;
-    color:#000000;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    justify-content: center;
+    border: 0;
+    background-color: rgb(106, 96, 255);
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.8s;
 }
 .container1 button:hover {
-    background-color: #0085c7;
+    background-color: rgb(45, 37, 163);
+    cursor: pointer;
 }
 .entry-list {
     margin-top: 20px;
@@ -361,11 +393,28 @@ textarea {
 }
 .entry button {
     margin-top: 10px;
-    background-color: #f44336;
+    background-color: #fd5000;
     border: 0 ;
     padding: 5px;
     border-radius: 5px;
+    color: white;
 }
 .entry button:hover {
     background-color: #d32f2f;
+    cursor: pointer;
+}
+
+#finalize-week-btn{
+    border: 0;
+    background-color: rgb(106, 96, 255);
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.8s;
+}
+
+#finalize-week-btn:hover{
+    background-color: rgb(45, 37, 163);
+    cursor: pointer;
 }

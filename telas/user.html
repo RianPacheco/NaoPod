@@ -11,19 +11,9 @@
     <header>
         <img class="logo" src="../assets/logoAC.png" alt="logo">
         <div class="nav-links">
-            <a href="javascript:void(0)" id="notifications-link">Notificações</a>
             <a href="conta.html">Conta</a>
         </div>
     </header>
-
-    <div id="notifications" class="notifications-dropdown">
-        <ul>
-            <li>Nova notificação 1</li>
-            <li>Nova notificação 2</li>
-            <li><p id="pontuacao">Pontuação: 0</p>
-            </li>
-        </ul>
-    </div>
 
     <div class="background-container"></div>
 
@@ -40,7 +30,7 @@
         <div class="buttons">
             <button onclick="showSection(1)" class="selected">Desempenho</button>
             <button onclick="showSection(2)">Estatística</button>
-            <button onclick="showSection(3)">Relatório</button>
+            <button onclick="showSection(3)">Diário</button>
         </div>
     </div>
 
@@ -77,26 +67,24 @@
                 </div>
                 <div class="calendar-days" id="calendar-days"></div>
             </div>
-            <button class="btn-calendar" onclick="changeMonth(-1)">Anterior</button>
-            <button class="btn-calendar" onclick="changeMonth(1)">Próximo</button>
         </div>
     </div>
     </div>
     <div id="section-2" class="section">
         <div id="section2">
             <div class="s2-left">
-                <div>
-                    <h1>numero ruim</h1>
-                    <h2>sla</h2>
+                <div id="gooddays">
+                    <h1>Dias Bons</h1>
+                    <p id="green-results">0</p>
                 </div>
-                <div>
-                    <h1>numero bom</h1>
-                    <h2>sla2</h2>
+                <div id="baddays">
+                    <h1>Dias Ruins</h1>
+                    <p id="red-results">0</p>
                 </div>
             </div>
             <div class="s2-right">
-                <div>
-                    <h1>Desempenho final</h1>
+                <div id="finaldes">
+                    <p id="performance"></p>
                 </div>
             </div>
         </div>
@@ -121,5 +109,6 @@
     <script src="../js/user.js"></script>
     <script src="../js/calendar.js"></script>
     <script src="../js/verify.js"></script>
+    <script src="../js/estatistica.js"></script>
 </body>
 </html>

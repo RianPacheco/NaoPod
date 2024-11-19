@@ -10,7 +10,6 @@
     <header>
         <img class="logo" src="../assets/logoAC.png" alt="logo">
         <div class="nav-links">
-            <a href="javascript:void(0)" id="notifications-link">Notificações</a>
             <a href="user.html">Usuário</a>
         </div>
     </header>
@@ -22,8 +21,7 @@
             <ul>
                 <li><button onclick="mostrarSecao('perfil')">Perfil</button></li>
                 <li><button onclick="mostrarSecao('seguranca')">Segurança</button></li>
-                <li><button onclick="mostrarSecao('notificacoes')">Notificações</button></li>
-                <li><button onclick="mostrarSecao('logout')">Sair</button></li>
+                <li><button onclick="mostrarSecao('logout')" id="sair">Sair</button></li>
             </ul>
         </aside>
 
@@ -60,23 +58,11 @@
                 <button onclick="salvarSenha()">Salvar Senha</button>
             </section>
             
-            
-            
-            <section id="notificacoes" class="section">
-                <h1>Notificações</h1>
-                <p>Gerencie como você recebe notificações.</p>
-            </section>
-            
             <section id="privacidade" class="section">
                 <h1>Privacidade</h1>
                 <p>Controle suas configurações de privacidade.</p>
             </section>
-            
-            <section id="tema" class="section">
-                <h1>Tema</h1>
-                <p>Personalize a aparência da sua conta.</p>
-            </section>
-            
+
             <section id="logout" class="section">
                 <h1>Sair</h1>
                 <p>Deseja realmente sair?</p>

@@ -22,45 +22,23 @@ header .nav-links {
     display: flex;
     gap: 20px;
 }
-
 header .nav-links a {
     color: white;
     text-decoration: none;
-    padding: 5px 10px;
-    transition: background-color 0.3s;
+    padding: 10px 20px;
+    font-size: 20px;
+    background-color: #0059e6;
+    border-radius: 10px;
+    transition: background-color 0.8s, color 0.8s;
 }
 
 header .nav-links a:hover {
-    background-color: #0059e6;
-    border-radius: 5px;
-}
-
-.notifications-dropdown {
-    display: none;
-    position: absolute;
-    top: 70px;
-    right: 100px;
-    background-color:#ffffff;
-    border: 1px solid #ccc;
-    padding: 10px;
-    width: 150px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    height: auto;
-    z-index: 2;  
+    background-color: #ffffff;
+    color:#0059e6;
+    padding: 9px 20px;
     border-radius: 10px;
-    color: #000060;
-
 }
 
-.notifications-dropdown ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-}
-
-.notifications-dropdown ul li {
-    padding: 5px 0;
-}
 
 .container {
     display: flex;
@@ -128,4 +106,12 @@ header .nav-links a:hover {
 
 .hidden {
     display: none;
+}
+
+#sair{
+    background-color: rgba(255, 0, 0, 0.596);
+}
+
+#sair:hover{
+    background-color: rgba(165, 0, 0, 0.521);
 }
