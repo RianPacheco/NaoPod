@@ -94,8 +94,46 @@ header .nav-links a:hover {
     padding: 20px;
     background-color: #f3f4f6;
     overflow-y: auto;
+    font-size: 20px;
 }
 
+.perfil-info {
+    margin-top: 15px;
+}
+
+#logout button{
+    margin: auto;
+    padding: 15px 40px 15px 40px;
+    font-size: 15px;
+}
+.content button{
+    border: 0;
+    padding: 5px 15px 5px 15px;
+    border-radius: 20px;
+    background-color: #0059e6;
+    color: white;
+    box-shadow: 0px 5px 7px rgba(0, 0, 0, 0.3);
+}
+
+.content input{
+    border: 0;
+    padding: 6px;
+    border-radius: 20px;
+    background-color: white;
+    color: rgb(0, 0, 0);
+    box-shadow: 0px 5px 7px rgba(0, 0, 0, 0.3);
+}
+
+
+.content p{
+    margin-bottom: 40px;
+    font-size: 15px;
+    margin-top: 0;
+}
+
+.content label{
+    font-weight: bold;
+}
 .section {
     display: none;
 }
