@@ -11,9 +11,8 @@
     <header>
         <img class="logo" src="../assets/logoAC.png" alt="logo">
         <div class="nav-links">
-            <a href="#sobre-nos">Sobre Nós</a>
             <a href="javascript:void(0)" id="notifications-link">Notificações</a>
-            <a href="#conta">Conta</a>
+            <a href="conta.html">Conta</a>
         </div>
     </header>
 
@@ -21,7 +20,8 @@
         <ul>
             <li>Nova notificação 1</li>
             <li>Nova notificação 2</li>
-            <li>Nova notificação 3</li>
+            <li><p id="pontuacao">Pontuação: 0</p>
+            </li>
         </ul>
     </div>
 
@@ -33,13 +33,14 @@
                 <img src="../assets/foto perfil padrao.jpg" alt="Foto de Perfil" id="profile-picture"/>
                 <input type="file" accept="image/*" onchange="changeProfilePicture(event)" id="file-input">
             </div>
+            <p class="nickname" id="nickname">XXXX</p>
+
         </div>
         
         <div class="buttons">
             <button onclick="showSection(1)" class="selected">Desempenho</button>
             <button onclick="showSection(2)">Estatística</button>
             <button onclick="showSection(3)">Relatório</button>
-            <button onclick="showSection(4)">Comunidade</button>
         </div>
     </div>
 
@@ -48,13 +49,16 @@
          <div class="weekly-count">
             <h3>Semana Atual</h3>
             <div class="week-buttons">
-                <button class="week-day-btn" onclick="toggleWeeklyStatus(this)">Dom</button>
-                <button class="week-day-btn" onclick="toggleWeeklyStatus(this)">Seg</button>
-                <button class="week-day-btn" onclick="toggleWeeklyStatus(this)">Ter</button>
-                <button class="week-day-btn" onclick="toggleWeeklyStatus(this)">Qua</button>
-                <button class="week-day-btn" onclick="toggleWeeklyStatus(this)">Qui</button>
-                <button class="week-day-btn" onclick="toggleWeeklyStatus(this)">Sex</button>
-                <button class="week-day-btn" onclick="toggleWeeklyStatus(this)">Sáb</button>
+                <button class="week-day-btn" data-week="1">Dom</button>
+                <button class="week-day-btn" data-week="2">Seg</button>
+                <button class="week-day-btn" data-week="3">Ter</button>
+                <button class="week-day-btn" data-week="4">Qua</button>
+                <button class="week-day-btn" data-week="5">Qui</button>
+                <button class="week-day-btn" data-week="6">Sex</button>
+                <button class="week-day-btn" data-week="7">Sáb</button>
+            </div>
+            <div>
+                <button id="finalize-week-btn">Finalizar Semana</button>
             </div>
         </div>
 
@@ -78,11 +82,44 @@
         </div>
     </div>
     </div>
-    <div id="section-2" class="section">Conteúdo da Seção 2</div>
-    <div id="section-3" class="section">Conteúdo da Seção 3</div>
-    <div id="section-4" class="section">Conteúdo da Seção 4</div>
+    <div id="section-2" class="section">
+        <div id="section2">
+            <div class="s2-left">
+                <div>
+                    <h1>numero ruim</h1>
+                    <h2>sla</h2>
+                </div>
+                <div>
+                    <h1>numero bom</h1>
+                    <h2>sla2</h2>
+                </div>
+            </div>
+            <div class="s2-right">
+                <div>
+                    <h1>Desempenho final</h1>
+                </div>
+            </div>
+        </div>
+    </div>
 
+    <div id="section-3" class="section">
+        
+        <div class="container1">
+            <h1>Diário Pessoal</h1>
+            <textarea id="diaryInput" placeholder="Como foi seu dia hoje? :]"></textarea>
+            <br>
+            <button id="saveBtn">Salvar Anotação</button>
+        </div>
+        <div class="container2">
+            <h2>Todas as anotações</h2>
+            <div class="entry-list" id="entryList">
+                <!-- Anotações anteriores aparecerão aqui -->
+            </div>
+        </div>
+
+    <script src="../js/diary.js"></script>
     <script src="../js/user.js"></script>
     <script src="../js/calendar.js"></script>
+    <script src="../js/verify.js"></script>
 </body>
 </html>

@@ -1,10 +1,3 @@
-// Função para alternar o menu de notificações
-document.getElementById('notifications-link').addEventListener('click', function() {
-    const notificationsDropdown = document.getElementById('notifications');
-    notificationsDropdown.style.display = notificationsDropdown.style.display === 'block' ? 'none' : 'block';
-});
-
-
 // Função para mostrar ou esconder as seções com transição
 function showSection(sectionNumber) {
     // Esconde todas as seções
@@ -15,7 +8,9 @@ function showSection(sectionNumber) {
 
     // Mostra a seção correspondente
     const selectedSection = document.getElementById(`section-${sectionNumber}`);
-    selectedSection.classList.add('active');
+    if (selectedSection) {
+        selectedSection.classList.add('active');
+    }
 
     // Adiciona a classe 'selected' ao botão clicado
     const buttons = document.querySelectorAll('.buttons button');
@@ -25,5 +20,7 @@ function showSection(sectionNumber) {
 
     // Adiciona a classe 'selected' ao botão clicado
     const clickedButton = document.querySelector(`.buttons button:nth-child(${sectionNumber})`);
-    clickedButton.classList.add('selected');
+    if (clickedButton) {
+        clickedButton.classList.add('selected');
+    }
 }

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configurações - Conta</title>
+    <link rel="stylesheet" href="../css/conta.css">
+</head>
+<body>
+    <header>
+        <img class="logo" src="../assets/logoAC.png" alt="logo">
+        <div class="nav-links">
+            <a href="javascript:void(0)" id="notifications-link">Notificações</a>
+            <a href="user.html">Usuário</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Barra lateral -->
+        <aside class="sidebar">
+            <h2>Configurações</h2>
+            <ul>
+                <li><button onclick="mostrarSecao('perfil')">Perfil</button></li>
+                <li><button onclick="mostrarSecao('seguranca')">Segurança</button></li>
+                <li><button onclick="mostrarSecao('notificacoes')">Notificações</button></li>
+                <li><button onclick="mostrarSecao('logout')">Sair</button></li>
+            </ul>
+        </aside>
+
+        <!-- Conteúdo principal -->
+        <main class="content">
+            <section id="perfil" class="section active">
+                <h1>Perfil</h1>
+                <p>Aqui você pode editar as informações do seu perfil.</p>
+            
+                <div class="perfil-info">
+                    <label>Nome:</label>
+                    <span id="perfil-nome-text"></span>
+                    <input type="text" id="perfil-nome-input" class="hidden">
+                    <button id="editar-nome" onclick="editarCampo('nome')">Editar</button>
+                    <button id="salvar-nome" class="hidden" onclick="salvarCampo('nome')">Salvar</button>
+                </div>
+            
+                <div class="perfil-info">
+                    <label>E-mail:</label>
+                    <span id="perfil-email-text"></span>
+                    <input type="email" id="perfil-email-input" class="hidden">
+                    <button id="editar-email" onclick="editarCampo('email')">Editar</button>
+                    <button id="salvar-email" class="hidden" onclick="salvarCampo('email')">Salvar</button>
+                </div>
+            </section>
+            
+            
+            <section id="seguranca" class="section">
+                <h1>Segurança</h1>
+                <p>Altere sua senha.</p>
+            
+                <label for="seguranca-senha">Nova Senha:</label>
+                <input type="password" id="seguranca-senha" placeholder="Digite sua nova senha">
+                <button onclick="salvarSenha()">Salvar Senha</button>
+            </section>
+            
+            
+            
+            <section id="notificacoes" class="section">
+                <h1>Notificações</h1>
+                <p>Gerencie como você recebe notificações.</p>
+            </section>
+            
+            <section id="privacidade" class="section">
+                <h1>Privacidade</h1>
+                <p>Controle suas configurações de privacidade.</p>
+            </section>
+            
+            <section id="tema" class="section">
+                <h1>Tema</h1>
+                <p>Personalize a aparência da sua conta.</p>
+            </section>
+            
+            <section id="logout" class="section">
+                <h1>Sair</h1>
+                <p>Deseja realmente sair?</p>
+                <button onclick="logout()">Confirmar</button>
+            </section>
+        </main>
+    </div>
+
+    <script src="../js/conta.js"></script>
+</body>
+</html>

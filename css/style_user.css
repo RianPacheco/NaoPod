@@ -69,8 +69,8 @@ header .nav-links a:hover {
 
 .background-container {
     position: relative;  
-    height: 200px;                   
-    width: 100%;                   
+    height: 300px;                   
+    max-width: 100%;                   
     background-color: #f0f0f0;     
     background-image: url('../assets/backfoto.jpg');
     background-size: cover;       
@@ -86,9 +86,15 @@ header .nav-links a:hover {
     max-height: 30px;
     position: relative;
     height: 100vh;
-    padding: 20px;
+    padding: 30px;
     overflow: hidden;
 
+}
+
+.nickname{
+    color: white;
+    margin: 0 20px 0 20px;
+    font-size: 25px;
 }
 
 .profile {
@@ -168,7 +174,8 @@ button:focus {
 /* section 1 */
 
 #section-1{
-    background-color: #a7d8f0;
+    background-color: white
+    
 }
 .weekly-count, .annual-calendar {
     margin: 20px 0;
@@ -184,6 +191,7 @@ button:focus {
     align-items: center;
     justify-content: center;
     gap: 20px;
+    
 }
 
 .week-day-btn, .day {
@@ -196,18 +204,22 @@ button:focus {
     cursor: pointer;
     transition: background-color 0.3s;
     border: #000060 solid 2px;
+    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.3);
     background-color: #0059e6;
     color: white;
-    padding: 30px;
+    padding: 30px
+    
 }
 
 .week-day-btn.good, .day.good {
     background-color: rgb(96, 255, 96);
+    box-shadow: 0px 2px 15px rgba(0, 194, 58, 0.822);
     color: black;
 }
 
 .week-day-btn.bad, .day.bad {
     background-color: rgb(255, 86, 86);
+    box-shadow: 0px 2px 15px rgba(204, 0, 0, 0.685);
     color: white;
 }
 
@@ -215,6 +227,7 @@ button:focus {
     width: 50%;
     margin: 0 auto;
     text-align: center;
+    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.3);
     background-color: #0059e6;
     padding: 20px;
     border-radius: 20px;
@@ -265,4 +278,94 @@ button:focus {
     padding: 5px;
     border: #000060 solid 1px;
     border-radius: 10px;
+}
+
+/*seçao 2 */
+
+#section2{
+    display: flex;
+}
+
+.s2-left{
+    width: 50%;
+    background-color: #000060;
+}
+
+.s2-right{
+    width: 50%;
+    background-color: #0059e6;
+}
+
+/*section 3*/
+
+.container1 {
+    max-width: 70%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color:#0059e6;
+    border-radius: 8px;
+    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.3);
+    color: white;
+    align-items: center;
+    display: grid;
+}
+
+.container2 {
+    max-width: 70%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color:#0059e6;
+    border-radius: 8px;
+    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.3);
+    color: white;
+}
+
+
+.container1 h1{
+    text-align: center;
+}
+
+.container2 h2{
+    text-align: center;
+}
+textarea {
+    width: 95%;
+    height: 150px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.container1 button {
+    padding: 10px 20px;
+    background-color:#0099e6;
+    color:#000000;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    justify-content: center;
+}
+.container1 button:hover {
+    background-color: #0085c7;
+}
+.entry-list {
+    margin-top: 20px;
+}
+.entry {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+}
+.entry button {
+    margin-top: 10px;
+    background-color: #f44336;
+    border: 0 ;
+    padding: 5px;
+    border-radius: 5px;
+}
+.entry button:hover {
+    background-color: #d32f2f;
 }
