@@ -6,6 +6,9 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
+    flex-direction: column ;
+    gap: 100px;
+
 }
 
 .container {
@@ -109,4 +112,8 @@ img{
 
 #sair{
     background-color: red;
+}
+
+footer {
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
 }

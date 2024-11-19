@@ -1,0 +1,68 @@
+/* Geral */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    background-color:  #a7d8f0;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #000060;
+    color: white;
+    padding: 10px 20px;
+}
+
+header .logo{
+    width: 70px;
+}
+
+header .nav-links {
+    display: flex;
+}
+
+header .nav-links a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    font-size: 20px;
+    background-color: #0059e6;
+    border-radius: 10px;
+    transition: background-color 0.8s, color 0.8s;
+}
+
+header .nav-links a:hover {
+    background-color: #ffffff;
+    color:#0059e6;
+    padding: 9px 20px;
+    border-radius: 10px;
+}
+
+main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 110px;
+}
+
+main h1 {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+main p {
+    text-align: center;
+    width: 740px;
+    line-height: 32px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+footer {
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    text-align: center;
+    margin-top: 190px;
+}
