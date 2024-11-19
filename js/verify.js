@@ -30,7 +30,7 @@ function cadastrar() {
     localStorage.setItem('usuarios', JSON.stringify(usuarios));
 
     alert('Cadastro realizado com sucesso!');
-    window.location.href = 'index.html'; // Redireciona para a página de login
+    window.location.href = '../index.html'; // Redireciona para a página de login
 }
 
 
